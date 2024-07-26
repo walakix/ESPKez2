@@ -1,0 +1,162 @@
+object Form1: TForm1
+  Left = 496
+  Height = 271
+  Top = 119
+  Width = 672
+  Caption = 'ESPKez2'
+  ClientHeight = 271
+  ClientWidth = 672
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  LCLVersion = '3.2.0.0'
+  object Edit1: TEdit
+    Left = 8
+    Height = 26
+    Top = 16
+    Width = 120
+    TabOrder = 0
+    Text = '192.168.201.255'
+  end
+  object Label1: TLabel
+    Left = 8
+    Height = 16
+    Top = 3
+    Width = 15
+    Caption = 'IP:'
+    ParentColor = False
+  end
+  object Edit2: TEdit
+    Left = 128
+    Height = 26
+    Top = 16
+    Width = 48
+    TabOrder = 1
+    Text = '9920'
+  end
+  object Label2: TLabel
+    Left = 128
+    Height = 16
+    Top = 3
+    Width = 29
+    Caption = 'Port:'
+    ParentColor = False
+  end
+  object Edit3: TEdit
+    Left = 176
+    Height = 26
+    Top = 15
+    Width = 240
+    TabOrder = 2
+    Text = 'Hello!'
+  end
+  object Label3: TLabel
+    Left = 176
+    Height = 16
+    Top = 3
+    Width = 45
+    Caption = 'Üzenet:'
+    ParentColor = False
+  end
+  object btnSend: TButton
+    Left = 416
+    Height = 25
+    Top = 16
+    Width = 75
+    Caption = 'Send'
+    Default = True
+    TabOrder = 3
+    OnClick = btnSendClick
+  end
+  object Memo1: TMemo
+    Left = 8
+    Height = 168
+    Top = 96
+    Width = 656
+    ScrollBars = ssAutoBoth
+    TabOrder = 4
+  end
+  object btnExit: TButton
+    Left = 416
+    Height = 25
+    Top = 54
+    Width = 75
+    Caption = 'Exit'
+    TabOrder = 5
+    OnClick = btnExitClick
+  end
+  object Edit4: TEdit
+    Left = 8
+    Height = 26
+    Top = 56
+    Width = 61
+    TabOrder = 6
+    Text = '9920'
+    OnChange = Edit4Change
+  end
+  object Label4: TLabel
+    Left = 8
+    Height = 16
+    Top = 40
+    Width = 61
+    Caption = 'LocalPort:'
+    ParentColor = False
+  end
+  object btnGetOS: TButton
+    Left = 56
+    Height = 15
+    Top = 80
+    Width = 45
+    Caption = 'get os'
+    TabOrder = 7
+    OnClick = btnGetOSClick
+  end
+  object btnGetVersion: TButton
+    Left = 8
+    Height = 15
+    Top = 80
+    Width = 45
+    Caption = 'get ver'
+    TabOrder = 8
+    OnClick = btnGetVersionClick
+  end
+  object btnGeOSVersion: TButton
+    Left = 104
+    Height = 15
+    Top = 80
+    Width = 59
+    Caption = 'get osver'
+    TabOrder = 9
+    OnClick = btnGeOSVersionClick
+  end
+  object btnShutdown: TButton
+    Left = 168
+    Height = 15
+    Top = 80
+    Width = 59
+    Caption = 'shutdown'
+    TabOrder = 10
+    OnClick = btnShutdownClick
+  end
+  object btnFindServer: TButton
+    Left = 232
+    Height = 16
+    Top = 80
+    Width = 75
+    Caption = 'FindServer'
+    TabOrder = 11
+    OnClick = btnFindServerClick
+  end
+  object UDPServer: TLUDPComponent
+    Port = 9910
+    OnReceive = UDPServerReceive
+    Timeout = 0
+    Left = 32
+    Top = 128
+  end
+  object UDPSend: TLUDPComponent
+    Port = 9911
+    Timeout = 0
+    Left = 88
+    Top = 128
+  end
+end

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Compiler Value="C:\lazarus\fpc\3.2.2\bin\x86_64-win64\fpc.exe" Date="1482330472"/>
+  <Params Value=" -MObjFPC -Scghi -O1 -WG -l -vewnhibq -FiW:\Sk\Prg\Lazarus\ESPKez2\lib\x86_64-win64 -FuC:\Users\Walaki\AppData\Local\lazarus\onlinepackagemanager\packages\lnet\lazaruspackage\lib\x86_64-win64 -FuC:\lazarus\components\ideintf\units\x86_64-win64\win32 -FuC:\lazarus\components\lazcontrols\lib\x86_64-win64\win32 -FuC:\lazarus\lcl\units\x86_64-win64\win32 -FuC:\lazarus\lcl\units\x86_64-win64 -FuC:\lazarus\components\freetype\lib\x86_64-win64 -FuC:\lazarus\components\buildintf\units\x86_64-win64 -FuC:\lazarus\components\lazutils\lib\x86_64-win64 -FuC:\lazarus\packager\units\x86_64-win64 -FuW:\Sk\Prg\Lazarus\ESPKez2\ -FUW:\Sk\Prg\Lazarus\ESPKez2\lib\x86_64-win64\ -FEW:\Sk\Prg\Lazarus\ESPKez2\ -oW:\Sk\Prg\Lazarus\ESPKez2\ESPKez2.exe -dLCL -dLCLwin32 ESPKez2.lpr"/>
+</CONFIG>

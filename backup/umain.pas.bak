@@ -1,0 +1,118 @@
+unit uMain;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
+  lNetComponents, lNet,LCLIntf,LCLType;
+
+const
+  C_MAXBUFLEN = 32768;
+
+type
+
+  { TForm1 }
+
+  TForm1 = class(TForm)
+    btnSend: TButton;
+    btnExit: TButton;
+    Edit1: TEdit;
+    Edit2: TEdit;
+    Edit3: TEdit;
+    Edit4: TEdit;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    UDPSend: TLUDPComponent;
+    UDPServer: TLUDPComponent;
+    Memo1: TMemo;
+    procedure btnExitClick(Sender: TObject);
+    procedure btnSendClick(Sender: TObject);
+    procedure Edit4Change(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+    procedure UDPServerReceive(aSocket: TLSocket);
+  private
+    { private declarations }
+    procedure UDPSendMsg(sIP:string; wPort:word; sMsg:string);
+  public
+    { public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.lfm}
+
+{ TForm1 }
+
+procedure TForm1.UDPSendMsg(sIP:string; wPort:word; sMsg:string);
+var PS: array[0..C_MAXBUFLEN] of Char;
+begin
+  StrPCopy(PS, sMsg);
+  UDPSend.Connect(sIP, wPort);
+//  Memo1.Lines.Add('Send to '+Hova+':'+IntToStr(RPort)+' .'+strpas(ps)+'.  -  '+inttostr(strlen(ps)));
+  UDPSend.Send(ps, strlen(ps)+1, sIP);
+  UDPSend.Disconnect();
+end;
+
+procedure TForm1.btnExitClick(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure TForm1.btnSendClick(Sender: TObject);
+begin
+  UDPSendMsg(Edit1.Text,StrToInt(Edit2.Text), Edit3.Text);
+end;
+
+procedure TForm1.Edit4Change(Sender: TObject);
+begin
+  UDPServer.Disconnect();
+  UDPServer.Port:=StrToInt(Edit4.Text);
+  UDPServer.Listen(StrToInt(Edit4.Text));
+end;
+
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+  UDPServer.Port:=StrToInt(Edit4.Text);
+  UDPServer.Listen(StrToInt(Edit4.Text));
+end;
+
+procedure TForm1.FormDestroy(Sender: TObject);
+begin
+  UDPServer.Disconnect();
+end;
+
+procedure TForm1.UDPServerReceive(aSocket: TLSocket);
+var
+  s, FileName:string;
+  bmp:TBitmap;
+  ScreenDC:HDC;
+begin
+  aSocket.GetMessage(s);
+  s:=trim(s);
+  Memo1.Lines.Add(DateTimeToStr(Now)+': UDP Receive from '+
+    aSocket.PeerAddress+':'+IntToStr(aSocket.PeerPort)+' --- '+
+    '('+s+')');
+  if s='screen' then begin
+    bmp:=TBitmap.Create;
+    ScreenDC:= GetDC(0);
+    bmp.LoadFromDevice(ScreenDC);
+    FileName := 'Screenshot_'+FormatDateTime('mm-dd-yyyy-hhnnss',now())+'.bmp';
+    bmp.SaveToFile(FileName);
+    ReleaseDC(0, ScreenDC);
+    bmp.Free;
+  end;
+end;
+
+
+
+end.
+

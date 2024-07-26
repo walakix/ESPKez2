@@ -1,0 +1,311 @@
+object Form1: TForm1
+  Left = 529
+  Height = 547
+  Top = 112
+  Width = 674
+  Caption = 'ESPKez2'
+  ClientHeight = 547
+  ClientWidth = 674
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  LCLVersion = '2.2.6.0'
+  object eIP: TEdit
+    Left = 8
+    Height = 23
+    Top = 49
+    Width = 120
+    TabOrder = 0
+    Text = '192.168.201.255'
+  end
+  object Label1: TLabel
+    Left = 8
+    Height = 15
+    Top = 33
+    Width = 13
+    Caption = 'IP:'
+    ParentColor = False
+  end
+  object Edit2: TEdit
+    Left = 128
+    Height = 23
+    Top = 49
+    Width = 48
+    TabOrder = 1
+    Text = '9920'
+  end
+  object Label2: TLabel
+    Left = 128
+    Height = 15
+    Top = 33
+    Width = 25
+    Caption = 'Port:'
+    ParentColor = False
+  end
+  object Edit3: TEdit
+    Left = 176
+    Height = 23
+    Top = 49
+    Width = 264
+    TabOrder = 2
+  end
+  object Label3: TLabel
+    Left = 176
+    Height = 15
+    Top = 33
+    Width = 49
+    Caption = 'Message:'
+    ParentColor = False
+  end
+  object btnSend: TButton
+    Left = 440
+    Height = 25
+    Top = 48
+    Width = 75
+    Caption = 'Send'
+    Default = True
+    OnClick = btnSendClick
+    TabOrder = 3
+  end
+  object Memo1: TMemo
+    Left = 8
+    Height = 168
+    Top = 368
+    Width = 656
+    ReadOnly = True
+    ScrollBars = ssAutoBoth
+    TabOrder = 4
+  end
+  object btnExit: TButton
+    Left = 589
+    Height = 25
+    Top = 49
+    Width = 75
+    Caption = 'Exit'
+    OnClick = btnExitClick
+    TabOrder = 5
+  end
+  object Edit4: TEdit
+    Left = 520
+    Height = 23
+    Top = 49
+    Width = 61
+    OnChange = Edit4Change
+    TabOrder = 6
+    Text = '9920'
+  end
+  object Label4: TLabel
+    Left = 520
+    Height = 15
+    Top = 32
+    Width = 53
+    Caption = 'LocalPort:'
+    ParentColor = False
+  end
+  object Label5: TLabel
+    Left = 8
+    Height = 15
+    Top = 91
+    Width = 61
+    Caption = 'Controllers:'
+    ParentColor = False
+  end
+  object btnGetAll: TButton
+    Left = 8
+    Height = 25
+    Top = 3
+    Width = 88
+    Caption = 'GetAllContr'
+    OnClick = btnGetAllClick
+    TabOrder = 7
+  end
+  object sgControllers: TStringGrid
+    Left = 8
+    Height = 127
+    Top = 107
+    Width = 536
+    ColCount = 8
+    Font.Height = 10
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect, goSmoothScroll]
+    ParentFont = False
+    RowCount = 1
+    TabOrder = 8
+    Cells = (
+      8
+      0
+      0
+      'ID'
+      1
+      0
+      'Mode'
+      2
+      0
+      'Status'
+      3
+      0
+      'Temp'
+      4
+      0
+      'Hum'
+      5
+      0
+      'V'
+      6
+      0
+      'repDelta'
+      7
+      0
+      'FMode'
+    )
+  end
+  object sgThermometers: TStringGrid
+    Left = 8
+    Height = 105
+    Top = 256
+    Width = 343
+    Font.Height = 10
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect, goSmoothScroll]
+    ParentFont = False
+    RowCount = 1
+    TabOrder = 9
+    Cells = (
+      5
+      0
+      0
+      'ID'
+      1
+      0
+      'Temp'
+      2
+      0
+      'Hum'
+      3
+      0
+      'V'
+      4
+      0
+      'repDelta'
+    )
+  end
+  object Label6: TLabel
+    Left = 9
+    Height = 15
+    Top = 238
+    Width = 80
+    Caption = 'Thermometers:'
+    ParentColor = False
+  end
+  object btnOn: TButton
+    Left = 88
+    Height = 25
+    Top = 80
+    Width = 32
+    Caption = 'On'
+    OnClick = btnOnClick
+    TabOrder = 10
+  end
+  object btnOff: TButton
+    Left = 120
+    Height = 25
+    Top = 80
+    Width = 32
+    Caption = 'Off'
+    OnClick = btnOffClick
+    TabOrder = 11
+  end
+  object btnSetMode: TButton
+    Left = 256
+    Height = 25
+    Top = 80
+    Width = 75
+    Caption = 'SetMode'
+    OnClick = btnSetModeClick
+    TabOrder = 12
+  end
+  object cbModes: TComboBox
+    Left = 152
+    Height = 23
+    Top = 80
+    Width = 100
+    ItemHeight = 15
+    TabOrder = 13
+    Text = 'cbModes'
+  end
+  object sePrgTemp: TSpinEdit
+    Left = 416
+    Height = 23
+    Top = 80
+    Width = 56
+    MaxValue = 30
+    MinValue = -30
+    TabOrder = 14
+    Value = 18
+  end
+  object btnSetPrgTemp: TButton
+    Left = 528
+    Height = 25
+    Top = 80
+    Width = 88
+    Caption = 'SetPrgTemp'
+    OnClick = btnSetPrgTempClick
+    TabOrder = 15
+  end
+  object fseDeltaPrgTemp: TFloatSpinEdit
+    Left = 472
+    Height = 23
+    Top = 80
+    Width = 56
+    Increment = 0.1
+    MaxValue = 10
+    TabOrder = 16
+    Value = 0.5
+  end
+  object Button1: TButton
+    Left = 336
+    Height = 25
+    Top = 80
+    Width = 80
+    Caption = 'GetPrgTemp'
+    OnClick = Button1Click
+    TabOrder = 17
+  end
+  object cbIPs: TComboBox
+    Left = 178
+    Height = 23
+    Top = 3
+    Width = 163
+    ItemHeight = 15
+    TabOrder = 18
+    Text = 'cbIPs'
+  end
+  object btnGetAllIP: TButton
+    Left = 101
+    Height = 25
+    Top = 3
+    Width = 75
+    Caption = 'GetAllIP'
+    OnClick = btnGetAllIPClick
+    TabOrder = 19
+  end
+  object btnSelectIP: TButton
+    Left = 341
+    Height = 25
+    Top = 3
+    Width = 75
+    Caption = 'SelectIP'
+    OnClick = btnSelectIPClick
+    TabOrder = 20
+  end
+  object UDPServer: TLUDPComponent
+    Port = 9910
+    OnReceive = UDPServerReceive
+    Timeout = 0
+    Left = 48
+    Top = 408
+  end
+  object UDPSend: TLUDPComponent
+    Port = 9911
+    Timeout = 0
+    Left = 136
+    Top = 408
+  end
+end
